@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var express     	= require("express"),
     app         	= express(),
     bodyParser  	= require("body-parser"),
@@ -6,6 +8,7 @@ var express     	= require("express"),
 	moment			= require("moment"),
 	flash			= require("connect-flash"),
     passport    	= require("passport"),
+	cookieParser 	= require("cookie-parser"),
     LocalStrategy 	= require("passport-local"),
 	methodOverride	= require("method-override"),
     Campground  	= require("./models/campground"),
@@ -17,6 +20,7 @@ var express     	= require("express"),
 var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index");
+
 
 mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useCreateIndex: true}).then(() => {
 	console.log("Connected to DB!");
