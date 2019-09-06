@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <p class="lead">YelpCamp</p>
+            <p class="lead"><%= campground.name %></p>
 			<div id="map"></div>
         </div>
         <div class="col-md-9 campShow">
@@ -13,7 +13,7 @@
                     <h4><a><%=campground.name%></a></h4>
                     <p><%= campground.description %></p>
 					<p><em>Submitted by: <%= campground.author.username %>, <%= moment(campground.createdAt).fromNow() %></em></p>
-					<% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+					<% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
 						<a class="btn btn-sm btn-info" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
 						<form class="delete-form" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
 							<button class="btn btn-sm btn-danger">Delete</button>
@@ -36,7 +36,7 @@
 								<p>
 									<%= comment.text %> 
 								</p>
-							<% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+							<% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin) { %>
 								<a class="btn btn-sm btn-outline-info" 
 									href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">
 									Edit
