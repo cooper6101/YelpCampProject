@@ -1,0 +1,47 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+			<div class="list-group">
+				<li class="list-group-item active">User Name: <%= user.username %></li>
+				<li class="list-group-item d-flex justify-content-center"><img class="img-responsive profAvatar" src="<%= user.avatar %>"></li>
+                <li class="list-group-item">First Name: <%= user.firstName %></li>
+                <li class="list-group-item">Last Name: <%= user.lastName %></li>
+				<li class="list-group-item">Email : <a href="mailto:<%= user.email %>"><%= user.email %></a></li>
+            </div>
+        </div>
+        <div class="col-md-9 campShow">
+            <div class="thumbnail">
+				<h2 class="text-center my-4">
+					<%= user.username %>'s Campgrounds
+				</h2>
+				<hr>
+				<div class="row d-flex justify-content-center">
+				<% campgrounds.forEach(function(campground) { %>
+				<div class="d-flex justify-content-center col-8 col-md-6 col-lg-4 col-xl-3 pb-3">
+					<div class="profCard">
+						<img src="<%= campground.image %>">
+						<div class="card-body text-center">
+							<h5>
+								<% if (campground.name.length <= 12) { %>
+								<% 	var profName = campground.name.substring(0, 12); %>
+								<%   }	else  { %>
+								<% 	profName = campground.name.substring(0, 12) + ".."; %>
+								<% } %>
+								<%= profName %>
+							</h5>	
+							<a href="/campgrounds/<%= campground._id %>" class="btn btn-sm btn-primary">
+								Visit Campground
+							</a>
+							<h6 class="mt-2">$<%= campground.price %>/night</h6>
+						</div>
+					</div>
+				</div>
+			<% }); %>
+		</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

@@ -6,6 +6,10 @@
 	width: 18rem;
 }
 
+.profCard {
+	width: 12rem;
+}
+
 .card-body {
 	min-height: 150px;
 }
@@ -31,6 +35,11 @@
 
 .jumbotron {
 	padding: 25px 40px;
+}
+
+.profAvatar {
+	max-height: 150px;
+	max-width: 200px;
 }
 
 .card img {

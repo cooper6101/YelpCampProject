@@ -24,7 +24,14 @@
 					<div class="card">
 						<img src="<%= campground.image %>">
 						<div class="card-body text-center">
-							<h5><%= campground.name %></h5>	
+							<h5>
+								<% if (campground.name.length <= 15) { %>
+								<% 	var profName = campground.name.substring(0, 15); %>
+								<%   }	else  { %>
+								<% 	profName = campground.name.substring(0, 15) + ".."; %>
+								<% } %>
+								<%= profName %>
+							</h5>	
 							<a href="/campgrounds/<%= campground._id %>" class="btn btn-primary">
 								Visit Campground
 							</a>

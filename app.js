@@ -21,12 +21,12 @@ var commentRoutes    = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes      = require("./routes/index");
 
-// mongoose.connect("mongodb://localhost/yelp_camp_v12", {useNewUrlParser: true});
-mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useCreateIndex: true}).then(() => {
-	console.log("Connected to DB!");
-}).catch(err => {
-	console.log("ERROR", err.message);
-});
+mongoose.connect("mongodb://localhost/yelp_camp_v12", {useNewUrlParser: true});
+// mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true, useCreateIndex: true}).then(() => {
+// 	console.log("Connected to DB!");
+// }).catch(err => {
+// 	console.log("ERROR", err.message);
+// });
 
 mongoose.set('useFindAndModify', false);
 app.use(bodyParser.urlencoded({extended: true}));
